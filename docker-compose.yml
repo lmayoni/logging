@@ -1,0 +1,43 @@
+version: "2"
+
+# NETWORK #
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+
+# VOLUMES #
+volumes:
+  composer-cache-5.6:
+    driver: local
+  composer-cache-7.1:
+    driver: local
+# ----------------------------- #
+
+services:
+  # MPCAPI #
+  php71:
+    build:
+      context: /home/lucasm/dev/php71/
+      dockerfile: ./Dockerfile
+    restart: always
+    networks:
+      default:
+        ipv4_address: 172.20.0.10
+        aliases:
+          - local.php71.com
+    expose:
+      - 80
+      - 443
+    environment:
+      - WEB_DOCUMENT_ROOT=/var/www/html/
+      - WEB_ALIAS_DOMAIN=local.php71.com
+      - XDEBUG_REMOTE_AUTOSTART=1
+    volumes:
+      - /home/lucasm/dev/php71/:/var/www/html/
+      - /home/lucasm/dev/php71/certificates/:/opt/docker/etc/nginx/ssl/
+      - composer-cache-7.1:/root/.composer/
+
