@@ -20,3 +20,4 @@ $logger->error('This is a log error! ^_^ ');
 $logger->info("Line: ".__LINE__." - Function: ".__FUNCTION__." - File: ".__FILE__." - Mensaje INFO ",array('key'=>'value'), null);
 $logger->crit("Line: ".__LINE__." - Function: ".__FUNCTION__." - File: ".__FILE__." - Mensaje INFO ",array('key'=>'value'), null);
 
+
