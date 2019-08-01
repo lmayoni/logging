@@ -1,0 +1,12 @@
+{
+    "name": "root/app",
+    "authors": [
+        {
+            "name": "Lucas Mayoni",
+            "email": "lucas.mayoni@colppy.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^1.24"
+    }
+}
